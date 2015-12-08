@@ -134,12 +134,6 @@
 			}
 
 			$('<span>')
-				.addClass('appStore menuBtn')
-				.text(_('app store.'))
-				.click(function() { window.open('https://itunes.apple.com/app/apple-store/id736683061?pt=2073437&ct=adrproper&mt=8'); })
-				.appendTo(menu);
-
-			$('<span>')
 				.addClass('lightsOff menuBtn')
 				.text(_('lights off.'))
 				.click(Engine.turnLightsOff)
@@ -157,18 +151,6 @@
 				.click(Engine.confirmDelete)
 				.appendTo(menu);
 
-			$('<span>')
-				.addClass('menuBtn')
-				.text(_('share.'))
-				.click(Engine.share)
-				.appendTo(menu);
-
-			$('<span>')
-				.addClass('menuBtn')
-				.text(_('save.'))
-				.click(Engine.exportImport)
-				.appendTo(menu);
-
 			if(this.options.dropbox && Engine.Dropbox) {
 				this.dropbox = Engine.Dropbox.init();
 
@@ -178,12 +160,6 @@
 					.click(Engine.Dropbox.startDropbox)
 					.appendTo(menu);
 			}
-
-			$('<span>')
-				.addClass('menuBtn')
-				.text(_('github.'))
-				.click(function() { window.open('https://github.com/doublespeakgames/adarkroom'); })
-				.appendTo(menu);
 
 			// Register keypress handlers
 			$('body').off('keydown').keydown(Engine.keyDown);

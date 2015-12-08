@@ -1,0 +1,18 @@
+{
+	"id": "com.doublespeakgames.adarkroom",
+	"version": "1.0.11",
+	"uiRevision": 2,
+	"vendor": "DoubleSpeakGames",
+	"type": "web",
+	"main": "index.html",
+	"title": "A Dark Room",
+	"icon": "icon_80.png",
+	"largeIcon": "icon_130.png",
+	"iconColor": "#050505",
+	"transparent": false,
+	"splashBackground": "adr_splash.png",
+	"bgImage": "adr_splash.png",
+	"bgColor": "black",
+	"resolution": "1280x720",
+	"trustLevel":"default"
+}

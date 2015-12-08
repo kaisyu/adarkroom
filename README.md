@@ -1,3 +1,11 @@
+# A Dark Room for webOS TV #
+This project is a branch of [A Dark Room](https://github.com/doublespeakgames/adarkroom) for LG webOS TV platform. In this project some menus have been removed because they do not work properly as an application of webOS TV. (E.g. `github`, `save`, `share`, `app store`)
+
+To build your own ADR package for webOS TV just follow the instructions:
+
+1. Download and Install [LG webOS TV SDK](http://developer.lge.com/webOSTV/sdk/web-sdk/)
+2. Run `build_ipk.sh`
+
 A Dark Room
 ===========
 > "awake. head throbbing. vision blurry. come light the fire."
