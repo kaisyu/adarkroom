@@ -68,7 +68,7 @@ Events.Outside = [
 	{ /* Hut fire */
 		title: _('Fire'),
 		isAvailable: function() {
-			return Engine.activeModule == Outside && $SM.get('game.buildings["hut"]', true) > 0 && $SM.get('game.population', true) > 5;
+			return Engine.activeModule == Outside && $SM.get('game.buildings["hut"]', true) > 0 && $SM.get('game.population', true) > 50;
 		},
 		scenes: {
 			'start': {
@@ -148,7 +148,7 @@ Events.Outside = [
 			}
 		}
 	},
-		
+
 	{ /* Plague */
 		title: _('Plague'),
 		isAvailable: function() {
@@ -275,7 +275,7 @@ Events.Outside = [
 					bullets: 10,
 					'cured meat': 50
 				},
-				
+
 				blink: true,
 				buttons: {
 					'end': {
@@ -287,4 +287,5 @@ Events.Outside = [
 			}
 		}
 	}
+
 ];

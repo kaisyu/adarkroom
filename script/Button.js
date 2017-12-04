@@ -70,6 +70,9 @@ var Button = {
 		var cd = btn.data("cooldown");
 		var id = 'cooldown.'+ btn.attr('id');
 		if(cd > 0) {
+			if(typeof option == 'number') {
+				cd = option;
+			}
 			// param "start" takes value from cooldown time if not specified
 			var start, left;
 			switch(option){
@@ -106,8 +109,8 @@ var Button = {
 		}
 	},
 
-	clearCooldown: function(btn, ended) {
-		var ended = ended || false;
+	clearCooldown: function(btn, cooldownEnded) {
+		var ended = cooldownEnded || false;
 		if(!ended){
 			$('div.cooldown', btn).stop(true, true);
 		}

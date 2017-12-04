@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-12-10 10:23+0900\n"
-"PO-Revision-Date: 2015-05-21 05:35+0900\n"
+"POT-Creation-Date: 2015-12-22 13:35-0600\n"
+"PO-Revision-Date: 2017-03-14 22:47+0900\n"
 "Last-Translator: Jeong YunWon <adarkroom@youknowone.org>\n"
 "Language-Team: \n"
 "Language: ko\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.12\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: script/dropbox.js:62
 msgid "Dropbox connection"
-msgstr "드롭박스 연결"
+msgstr "Dropbox 연결"
 
 #: script/dropbox.js:65
 msgid "connect game to dropbox local storage"
@@ -228,7 +228,7 @@ msgstr "앱 스토어."
 msgid "lights off."
 msgstr "어둡게."
 
-#: script/engine.js:150 script/engine.js:495
+#: script/engine.js:150 script/engine.js:521
 msgid "hyper."
 msgstr "하이퍼."
 
@@ -292,11 +292,11 @@ msgstr "입력하신 코드가 정확하지 않으면, 모든 데이터가 사�
 msgid "this is irreversible."
 msgstr "이것은 되돌릴 수 없습니다."
 
-#: script/engine.js:311 script/engine.js:380
+#: script/engine.js:311 script/engine.js:380 script/engine.js:499
 msgid "yes"
 msgstr "네"
 
-#: script/engine.js:316 script/engine.js:385
+#: script/engine.js:316 script/engine.js:385 script/engine.js:504
 msgid "no"
 msgstr "아니오"
 
@@ -345,10 +345,21 @@ msgid "lights on."
 msgstr "밝게."
 
 #: script/engine.js:493
+msgid "Go Hyper?"
+msgstr "하이퍼 모드"
+
+#: script/engine.js:496
+msgid ""
+"turning hyper mode speeds up the game to x2 speed. do you want to do that?"
+msgstr ""
+"하이퍼 모드로 전환하면 게임 진행 속도가 2배 빨라집니다. 하이퍼 모드로 전환하"
+"시겠습니까?"
+
+#: script/engine.js:519
 msgid "classic."
 msgstr "클래식."
 
-#: script/engine.js:594
+#: script/engine.js:620
 msgid "{0} per {1}s"
 msgstr "{1}초 당 {0}개"
 
@@ -1940,13 +1951,12 @@ msgstr "나침반 사기"
 msgid "the old compass is dented and dusty, but it looks to work."
 msgstr "낡은 나침반은 찌그러지고 먼지 투성이지만, 그래도 쓸 수 있다."
 
-#: script/events/room.js:45 script/events/room.js:227
-#: script/events/room.js:240 script/events/room.js:253
-#: script/events/room.js:309 script/events/room.js:332
-#: script/events/room.js:388 script/events/room.js:411
-#: script/events/room.js:450 script/events/room.js:568
-#: script/events/room.js:584 script/events/room.js:600
-#: script/events/room.js:611
+#: script/events/room.js:45 script/events/room.js:227 script/events/room.js:240
+#: script/events/room.js:253 script/events/room.js:309
+#: script/events/room.js:332 script/events/room.js:388
+#: script/events/room.js:411 script/events/room.js:450
+#: script/events/room.js:568 script/events/room.js:584
+#: script/events/room.js:600 script/events/room.js:611
 msgid "say goodbye"
 msgstr "작별하기"
 

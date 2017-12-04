@@ -162,6 +162,9 @@ var World = {
 		// compass tooltip text
 		Room.compassTooltip(World.dir);
 
+		// Check if everything has been seen
+		World.testMap();
+
 		//subscribe to stateUpdates
 		$.Dispatch('stateUpdate').subscribe(World.handleStateUpdates);
 	},
@@ -549,6 +552,10 @@ var World = {
 		return World.state.map[World.curPos[0]][World.curPos[1]];
 	},
 
+	getDamage: function(thing) {
+		return World.Weapons[thing].damage;
+	},
+
 	narrateMove: function(oldTile, newTile) {
 		var msg = null;
 		switch(oldTile) {
@@ -617,10 +624,33 @@ var World = {
 		}
 	},
 
+	testMap: function() {
+		if(!World.seenAll) {
+			var dark; 
+			var mask = $SM.get('game.world.mask');
+			loop:
+			for(var i = 0; i < mask.length; i++) {
+				for(var j = 0; j < mask[i].length; j++) {
+					if(!mask[i][j]) {
+						dark = true;
+						break loop;
+					}
+				}
+			}
+			World.seenAll = !dark;
+		}
+	},
+
 	applyMap: function() {
-		var x = Math.floor(Math.random() * (World.RADIUS * 2) + 1);
-		var y = Math.floor(Math.random() * (World.RADIUS * 2) + 1);
-		World.uncoverMap(x, y, 5, $SM.get('game.world.mask'));
+		if(!World.seenAll){
+			var x,y,mask = $SM.get('game.world.mask');
+			do {
+				x = Math.floor(Math.random() * (World.RADIUS * 2) + 1);
+				y = Math.floor(Math.random() * (World.RADIUS * 2) + 1);
+			} while (mask[x][y]);
+			World.uncoverMap(x, y, 5, mask);
+		}
+		World.testMap();
 	},
 
 	generateMap: function() {
@@ -655,7 +685,7 @@ var World = {
 		// Place landmarks
 		for(var k in World.LANDMARKS) {
 			var landmark = World.LANDMARKS[k];
-			for(var i = 0; i < landmark.num; i++) {
+			for(var l = 0; l < landmark.num; l++) {
 				var pos = World.placeLandmark(landmark.minRadius, landmark.maxRadius, k, map);
 			}
 		}
@@ -683,7 +713,7 @@ var World = {
 					targets[index] = {
 						x : i - World.RADIUS,
 						y : j - World.RADIUS,
-					}
+					};
 					index++;
 					if(index === max){
 						// optimisation: stop the research if maximum number of items has been reached
@@ -766,8 +796,8 @@ var World = {
 		}
 
 		var list = [];
-		for(var t in chances) {
-			list.push(chances[t] + '' + t);
+		for(var j in chances) {
+			list.push(chances[j] + '' + j);
 		}
 		list.sort(function(a, b) {
 			var n1 = parseFloat(a.substring(0, a.length - 1));
@@ -777,8 +807,8 @@ var World = {
 
 		var c = 0;
 		var r = Math.random();
-		for(var i in list) {
-			var prob = list[i];
+		for(var l in list) {
+			var prob = list[l];
 			c += parseFloat(prob.substring(0,prob.length - 1));
 			if(r < c) {
 				return prob.charAt(prob.length - 1);
@@ -851,6 +881,7 @@ var World = {
 			Notifications.notify(World, _('the world fades'));
 			World.state = null;
 			Path.outfit = {};
+			$SM.remove('outfit');
 			$('#outerSlider').animate({opacity: '0'}, 600, 'linear', function() {
 				$('#outerSlider').css('left', '0px');
 				$('#locationSlider').css('left', '0px');
@@ -872,6 +903,8 @@ var World = {
 	goHome: function() {
 		// Home safe! Commit the changes.
 		$SM.setM('game.world', World.state);
+		World.testMap();
+
 		if(World.state.sulphurmine && $SM.get('game.buildings["sulphur mine"]', true) === 0) {
 			$SM.add('game.buildings["sulphur mine"]', 1);
 			Engine.event('progress', 'sulphur mine');
